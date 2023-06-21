@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_expandable_text: ^1.0.0
+  pin_code_fields: ^7.4.0
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -43,14 +43,11 @@ class _MyTextFieldState extends State<MyTextField> {
               obscureText: obscureTextON,
               keyboardType: widget.keyboardType,
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(14),
-                ),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
                 hintText: widget.hintText,
                 hintStyle: const TextStyle(
                   color: Colors.black,

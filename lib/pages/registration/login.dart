@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartphone_shop/pages/catalog.dart';
+import 'package:smartphone_shop/pages/registration/resetpassword.dart';
 import 'package:smartphone_shop/pages/registration/signup.dart';
 import 'package:smartphone_shop/widgets/button.dart';
 
@@ -63,26 +64,37 @@ class _MyLoginState extends State<MyLogin> {
               keyboardType: TextInputType.text,
             ),
             const SizedBox(height: 12),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 31),
-              child: Text(
-                "Forgot password?",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400,
-                  color: Color.fromARGB(255, 150, 150, 150),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PasswordResset()),
+                  );
+                },
+                child: const Text(
+                  "Forgot password?",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 150, 150, 150),
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.only(left: 31, right: 31),
-              child: MyButton(onTap: () {
-                Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MyCatalog()),
-            );
-              }, x: "Sign in",),
+              child: MyButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyCatalog()),
+                  );
+                },
+                name: "Sign in",
+              ),
             ),
             const SizedBox(height: 45),
             const Center(

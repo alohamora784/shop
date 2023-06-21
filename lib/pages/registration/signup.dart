@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smartphone_shop/widgets/appbar.dart';
 import 'package:smartphone_shop/widgets/button.dart';
 
-
 import '../../widgets/text_field.dart';
 
 class MySignUp extends StatefulWidget {
@@ -28,7 +27,10 @@ class _MySignUpState extends State<MySignUp> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(header: 'Sign Up', HasDivider: true,),
+      appBar: MyAppBar(
+        header: 'Sign Up',
+        HasDivider: true,
+      ),
       body: Stack(
         children: [
           ListView(
@@ -68,15 +70,9 @@ class _MySignUpState extends State<MySignUp> {
             left: 31,
             bottom: 50,
             right: 31,
-            
-            child: Align(
-              child: AnimatedPadding(
-                duration: const Duration(milliseconds: 0),
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.top,
-                ),
-                child: MyButton(onTap: () {  }, x: 'Continue',),
-              ),
+            child: MyButton(
+              onTap: () {},
+              name: 'Continue',
             ),
           ),
         ],

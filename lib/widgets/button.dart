@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
   final VoidCallback? onTap;
-  String x;
+  String name;
 
   MyButton({
     required this.onTap,
-    required this.x,
+    required this.name,
   });
 
   @override
@@ -23,7 +23,7 @@ class MyButton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 13, bottom: 13),
             child: (Text(
-              x,
+              name,
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white,

@@ -82,12 +82,12 @@ class _ProductPageState extends State<ProductPage> {
           const SizedBox(height: 59),
           Padding(
             padding: const EdgeInsets.only(right: 31, left: 31),
-            child: MyButton(onTap: () {}, x: "Buy now"),
+            child: MyButton(onTap: () {}, name: "Buy now"),
           ),
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.only(right: 31, left: 31),
-            child: MyButton(onTap: () {}, x: "Add to cart"),
+            child: MyButton(onTap: () {}, name: "Add to cart"),
           ),
           const SizedBox(height: 51),
           const Padding(
