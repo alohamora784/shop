@@ -40,6 +40,7 @@ class _MyTextFieldState extends State<MyTextField> {
           children: [
             TextField(
               controller: widget.controller,
+              
               obscureText: obscureTextON,
               keyboardType: widget.keyboardType,
               decoration: InputDecoration(

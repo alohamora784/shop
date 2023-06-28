@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartphone_shop/pages/registration/login.dart';
 import 'package:smartphone_shop/widgets/appbar.dart';
 import 'package:smartphone_shop/widgets/button.dart';
 import 'package:smartphone_shop/widgets/text_field.dart';
@@ -70,7 +71,12 @@ class _NewPasswordState extends State<NewPassword> {
             bottom: 46,
             left: 31,
             right: 31,
-            child: MyButton(onTap: () {}, name: "Confirm"),
+            child: MyButton(onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyLogin()),
+                );
+            }, name: "Confirm"),
           )
         ],
       ),

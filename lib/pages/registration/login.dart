@@ -3,6 +3,7 @@ import 'package:smartphone_shop/pages/catalog.dart';
 import 'package:smartphone_shop/pages/registration/resetpassword.dart';
 import 'package:smartphone_shop/pages/registration/signup.dart';
 import 'package:smartphone_shop/widgets/button.dart';
+import 'package:smartphone_shop/widgets/navigation.dart';
 
 import '../../widgets/text_field.dart';
 
@@ -90,7 +91,7 @@ class _MyLoginState extends State<MyLogin> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MyCatalog()),
+                    MaterialPageRoute(builder: (context) => const MyNavBar()),
                   );
                 },
                 name: "Sign in",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartphone_shop/widgets/categories.dart';
-import 'package:smartphone_shop/widgets/navigation.dart';
+
 import 'package:smartphone_shop/widgets/newgrid.dart';
 import 'package:smartphone_shop/widgets/text_field.dart';
 
@@ -24,7 +24,7 @@ class _MyCatalogState extends State<MyCatalog> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyNavBar(),
+      
       body: ListView(
         children: [
           Padding(
