@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smartphone_shop/pages/catalog.dart';
+import 'package:smartphone_shop/pages/profile.dart';
 import 'package:smartphone_shop/pages/registration/resetpassword.dart';
 import 'package:smartphone_shop/pages/search.dart';
-
 
 class MyNavBar extends StatefulWidget {
   const MyNavBar({super.key});
@@ -13,11 +13,11 @@ class MyNavBar extends StatefulWidget {
 
 class _MyNavBarState extends State<MyNavBar> {
   int selectedIndex = 0;
-  List<Widget> _pages = [
-    MyCatalog(),
-    PasswordResset(),
-    Search(),
-    
+  final List<Widget> _pages = [
+    const MyCatalog(),
+    const PasswordResset(),
+    const Search(),
+    const Profile()
   ];
 
   void navigatepage(index) {

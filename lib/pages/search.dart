@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartphone_shop/widgets/Brands.dart';
+import 'package:smartphone_shop/models/category.dart';
+import 'package:smartphone_shop/widgets/brands.dart';
 import 'package:smartphone_shop/widgets/categoriesdropdown.dart';
 
 import 'package:smartphone_shop/widgets/text_field.dart';
@@ -13,7 +14,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   final Searchcontroller = TextEditingController();
-
+  int index = 0;
   bool IsExpanded = false;
   @override
   Widget build(BuildContext context) {
@@ -39,65 +40,12 @@ class _SearchState extends State<Search> {
             ),
           ),
           const SizedBox(height: 31),
-          const Padding(
-            padding: EdgeInsets.only(left: 31, right: 31),
-            child: MyDropDown(
-              Header: "Smartphones",
-              item1: "Samsung",
-              item2: "Iphone",
-              item3: "Xiaomi",
+          for (var i = 0; i < MyCategory.items.length; i++)
+            Padding(
+              padding: EdgeInsets.only(left: 31, right: 31),
+              child: MyDropDown(category: MyCategory.items[i],),
             ),
-          ),
           const SizedBox(height: 14),
-          const Padding(
-            padding: EdgeInsets.only(left: 31, right: 31),
-            child: MyDropDown(
-              Header: "Tablets",
-              item1: "Apple",
-              item2: "OnePlus",
-              item3: "Samsung Tab",
-            ),
-          ),
-          const SizedBox(height: 14),
-          const Padding(
-            padding: EdgeInsets.only(left: 31, right: 31),
-            child: MyDropDown(
-              Header: "Smart Watches",
-              item1: "Apple",
-              item2: "Garmin",
-              item3: "Amazfit",
-            ),
-          ),
-          const SizedBox(height: 14),
-          const Padding(
-            padding: EdgeInsets.only(left: 31, right: 31),
-            child: MyDropDown(
-              Header: "Headphones",
-              item1: "Sony",
-              item2: "Sennheiser",
-              item3: "Apple",
-            ),
-          ),
-          const SizedBox(height: 14),
-          const Padding(
-            padding: EdgeInsets.only(left: 31, right: 31),
-            child: MyDropDown(
-              Header: "Cameras",
-              item1: "Sony",
-              item2: "Nikon",
-              item3: "Canon",
-            ),
-          ),
-          const SizedBox(height: 14),
-          const Padding(
-            padding: EdgeInsets.only(left: 31, right: 31),
-            child: MyDropDown(
-              Header: "Accessories",
-              item1: "Watch",
-              item2: "Glasses",
-              item3: "Begs",
-            ),
-          ),
           const SizedBox(height: 61),
           const Padding(
             padding: EdgeInsets.only(left: 31, right: 31),
@@ -110,17 +58,17 @@ class _SearchState extends State<Search> {
             ),
           ),
           const SizedBox(height: 28),
-          Container(
+          const SizedBox(
             height: 45,
             child: MyBrands(),
           ),
           const SizedBox(height: 12),
-          Container(
+          const SizedBox(
             height: 45,
             child: MyBrands(),
           ),
           const SizedBox(height: 12),
-          Container(
+          const SizedBox(
             height: 45,
             child: MyBrands(),
           ),

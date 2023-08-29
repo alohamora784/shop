@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:smartphone_shop/models/objectclass.dart';
+import 'package:smartphone_shop/models/posts.dart';
 
 class MySlider2 extends StatefulWidget {
-  const MySlider2({super.key});
+  final Post productimages;
+  MySlider2({
+    super.key,
+    required this.productimages,
+  });
 
   @override
   State<MySlider2> createState() => _MySlider2State();
@@ -12,23 +18,18 @@ int currentPage = 0;
 class _MySlider2State extends State<MySlider2> {
   @override
   Widget build(BuildContext context) {
-    return PageView(
+    return PageView.builder(
+      itemCount: widget.productimages.productsliderimages.length,
       onPageChanged: (int page) {
         setState(() {
           currentPage = page;
         });
       },
-      children: [
-        productSlider(
-          "assets/images/Rectangle 22.png",
-        ),
-        productSlider(
-          "assets/images/ihpne1222.png",
-        ),
-        productSlider(
-          "assets/images/Rectangle 22.png",
-        ),
-      ],
+      itemBuilder: (BuildContext context, int index) {
+        return productSlider(
+          widget.productimages.productsliderimages[index],
+        );
+      },
     );
   }
 
@@ -40,7 +41,7 @@ class _MySlider2State extends State<MySlider2> {
           left: 0,
           right: 0,
           bottom: 0,
-          child: Image.asset(
+          child: Image.network(
             img,
             fit: BoxFit.cover,
           ),

@@ -31,7 +31,7 @@ class _SimilarProductsState extends State<SimilarProducts> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
           ),
-          margin: EdgeInsets.all(11),
+          margin: const EdgeInsets.all(11),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(14),
             child: Stack(
@@ -56,7 +56,7 @@ class _SimilarProductsState extends State<SimilarProducts> {
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Padding(
-                      padding:  EdgeInsets.only(left: 10, top: 6, bottom: 6, right: 10),
+                      padding:  const EdgeInsets.only(left: 10, top: 6, bottom: 6, right: 10),
                       child: Text(producList[index]),
                     ),
                   ),

@@ -20,14 +20,15 @@ class _VerificationState extends State<Verification> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(header: "", HasDivider: true),
+      appBar: MyAppBar(header: "", hasDivider: true, hasIcon: true,),
       body: Stack(
         children: [
           ListView(
             children: [
-              SizedBox(height: 35),
+              const SizedBox(height: 35),
               const Padding(
                 padding: EdgeInsets.only(left: 31, right: 31),
                 child: Text(
@@ -51,9 +52,9 @@ class _VerificationState extends State<Verification> {
               ),
               const SizedBox(height: 100),
               Padding(
-                padding: EdgeInsets.only(left: 31, right: 31),
+                padding: const EdgeInsets.only(left: 31, right: 31),
                 child: PinCodeTextField(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 32,
                   ),
                   cursorColor: Colors.black,
@@ -106,7 +107,7 @@ class _VerificationState extends State<Verification> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewPassword()),
+                    MaterialPageRoute(builder: (context) => const NewPassword()),
                   );
                 },
                 name: "Confirm"),

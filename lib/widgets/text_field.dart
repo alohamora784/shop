@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
-  bool obscureTextON;
+  final bool obscureTextON;
 
   final TextInputType keyboardType;
 
-  MyTextField({
+  const MyTextField({
     super.key,
     required this.controller,
     required this.hintText,
@@ -34,17 +34,23 @@ class _MyTextFieldState extends State<MyTextField> {
         left: 31,
         right: 31,
       ),
-      child: SizedBox(
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 242, 242, 242),
+          borderRadius: BorderRadius.circular(20),
+        ),
         height: 53,
         child: Stack(
           children: [
             TextField(
-              controller: widget.controller,
               
+              controller: widget.controller,
               obscureText: obscureTextON,
               keyboardType: widget.keyboardType,
               decoration: InputDecoration(
-                border: InputBorder.none,
+                isDense: false,
+                contentPadding: const EdgeInsets.only(left: 14),
+                border: const UnderlineInputBorder(borderSide: BorderSide.none),
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 errorBorder: InputBorder.none,
@@ -54,8 +60,6 @@ class _MyTextFieldState extends State<MyTextField> {
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
-                fillColor: const Color.fromARGB(255, 242, 242, 242),
-                filled: true,
               ),
             ),
             if (widget.obscureTextON == true)
@@ -63,8 +67,8 @@ class _MyTextFieldState extends State<MyTextField> {
                 top: 17,
                 right: 17,
                 child: GestureDetector(
-                  child: Icon(Icons.visibility_rounded),
                   onTap: _toggleObscuring,
+                  child: const Icon(Icons.visibility_rounded),
                 ),
               )
           ],

@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:smartphone_shop/models/category.dart';
+
 import 'package:smartphone_shop/pages/searchtext.dart';
 
 class MyDropDown extends StatefulWidget {
-  final String Header;
-  final String item1;
-  final String item2;
-  final String item3;
+  MyCategory category;
 
-  const MyDropDown({
+  MyDropDown({
     super.key,
-    required this.Header,
-    required this.item1,
-    required this.item2,
-    required this.item3,
+    required this.category,
   });
 
   @override
@@ -21,6 +17,7 @@ class MyDropDown extends StatefulWidget {
 
 class _MyDropDownState extends State<MyDropDown> {
   bool IsExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,8 +33,8 @@ class _MyDropDownState extends State<MyDropDown> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  widget.Header,
-                  style: TextStyle(
+                  widget.category.name,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.black,
@@ -52,47 +49,32 @@ class _MyDropDownState extends State<MyDropDown> {
             ),
           ),
           if (IsExpanded) ...[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SearchText(),
-                  ),
-                );
-              },
-              child: Column(
-                children: [
-                  Text(
-                    widget.item1,
-                    textAlign: TextAlign.start,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
+            Column(
+              children: [
+                for (var i = 0; i < widget.category.brands.length; i++)
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchText(
+                            searchString: widget.category.brands[i],
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      widget.category.brands[i],
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    widget.item2,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    widget.item3,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                ],
-              ),
+                SizedBox(height: 10),
+              ],
             ),
           ],
           const Divider(

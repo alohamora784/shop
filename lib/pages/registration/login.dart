@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smartphone_shop/pages/catalog.dart';
 import 'package:smartphone_shop/pages/registration/resetpassword.dart';
 import 'package:smartphone_shop/pages/registration/signup.dart';
 import 'package:smartphone_shop/widgets/button.dart';
-import 'package:smartphone_shop/widgets/navigation.dart';
+import 'package:smartphone_shop/pages/navigation.dart';
 
 import '../../widgets/text_field.dart';
 
@@ -24,6 +23,7 @@ class _MyLoginState extends State<MyLogin> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -66,7 +66,7 @@ class _MyLoginState extends State<MyLogin> {
             ),
             const SizedBox(height: 12),
             Padding(
-              padding: EdgeInsets.only(left: 31),
+              padding: const EdgeInsets.only(left: 31),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -188,7 +188,7 @@ class _MyLoginState extends State<MyLogin> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MySignUp(),
+                      builder: (context) => const MySignUp(),
                     ),
                   );
                 },

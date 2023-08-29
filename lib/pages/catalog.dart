@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smartphone_shop/models/objectclass.dart';
+
 import 'package:smartphone_shop/widgets/categories.dart';
 
 import 'package:smartphone_shop/widgets/newgrid.dart';
 import 'package:smartphone_shop/widgets/text_field.dart';
 
+import '../providers/posts_provider.dart';
 import '../widgets/slider.dart';
 
 class MyCatalog extends StatefulWidget {
@@ -22,9 +26,15 @@ class _MyCatalogState extends State<MyCatalog> {
     super.dispose();
   }
 
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<PostsProvider>(context, listen: false).fetchPosts();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: ListView(
         children: [
           Padding(
@@ -36,8 +46,8 @@ class _MyCatalogState extends State<MyCatalog> {
                 keyboardType: TextInputType.text),
           ),
           const SizedBox(height: 44),
-          Padding(
-            padding: const EdgeInsets.only(left: 31, right: 31),
+          const Padding(
+            padding: EdgeInsets.only(left: 31, right: 31),
             child: MySlider(),
           ),
           const SizedBox(height: 44),
@@ -63,9 +73,9 @@ class _MyCatalogState extends State<MyCatalog> {
             ),
           ),
           const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.only(left: 31),
-            child: Container(
+          const Padding(
+            padding: EdgeInsets.only(left: 31),
+            child: SizedBox(
               height: 110,
               child: MyCategories(),
             ),
@@ -96,10 +106,10 @@ class _MyCatalogState extends State<MyCatalog> {
             ),
           ),
           const SizedBox(height: 36),
-          Padding(
-            padding: const EdgeInsets.only(left: 31, right: 31),
-            child: Container(
-              child: MyGrid(),
+          const Padding(
+            padding: EdgeInsets.only(left: 31, right: 31),
+            child: MyGrid(
+              filteredList: [],
             ),
           ),
         ],
@@ -107,5 +117,3 @@ class _MyCatalogState extends State<MyCatalog> {
     );
   }
 }
-
-class MyImgSlider {}

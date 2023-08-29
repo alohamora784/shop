@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String header;
-  bool HasDivider;
-   MyAppBar({super.key, required this.header, required this.HasDivider});
+   final bool hasDivider;
+   final bool hasIcon;
+   MyAppBar({super.key, required this.header, required this.hasDivider , required this.hasIcon});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 80,
-      leading: IconButton(
+      leading: hasIcon ? IconButton(
         icon: const Icon(Icons.arrow_back_ios_new),
         color: Colors.black,
         onPressed: () {
           Navigator.pop(context);
         },
-      ),
+      ) : null,
       centerTitle: true,
       elevation: 0.0,
       backgroundColor: Colors.white,
@@ -25,7 +26,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.black,
         ),
       ),
-      flexibleSpace: HasDivider == true ?  const Column(
+      flexibleSpace: hasDivider == true ?  const Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Divider(

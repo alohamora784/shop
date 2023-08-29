@@ -5,7 +5,7 @@ import 'package:smartphone_shop/widgets/button.dart';
 import 'package:smartphone_shop/widgets/text_field.dart';
 
 class NewPassword extends StatefulWidget {
-  NewPassword({super.key});
+  const NewPassword({super.key});
 
   @override
   State<NewPassword> createState() => _NewPasswordState();
@@ -21,9 +21,10 @@ class _NewPasswordState extends State<NewPassword> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(header: "", HasDivider: true),
+      appBar: MyAppBar(header: "", hasDivider: true, hasIcon: true,),
       body: Stack(
         children: [
           ListView(

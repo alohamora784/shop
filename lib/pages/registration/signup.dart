@@ -25,11 +25,12 @@ class _MySignUpState extends State<MySignUp> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
         header: 'Sign Up',
-        HasDivider: true,
+        hasDivider: true, hasIcon: true,
       ),
       body: Stack(
         children: [

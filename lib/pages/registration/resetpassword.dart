@@ -19,14 +19,15 @@ class _PasswordRessetState extends State<PasswordResset> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(header: "", HasDivider: true),
+      appBar: MyAppBar(header: "", hasDivider: true, hasIcon: true,),
       body: Stack(
         children: [
           ListView(
             children: [
-              SizedBox(height: 46),
+              const SizedBox(height: 46),
               const Padding(
                 padding: EdgeInsets.only(left: 31, right: 31),
                 child: Text(
@@ -38,7 +39,7 @@ class _PasswordRessetState extends State<PasswordResset> {
                   ),
                 ),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               const Padding(
                 padding: EdgeInsets.only(left: 31, right: 31),
                 child: Text(
@@ -50,7 +51,7 @@ class _PasswordRessetState extends State<PasswordResset> {
                   ),
                 ),
               ),
-              SizedBox(height: 52),
+              const SizedBox(height: 52),
               MyTextField(
                 controller: emailTextController,
                 hintText: "Username",

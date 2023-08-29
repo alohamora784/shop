@@ -31,7 +31,7 @@ class _MyBrandsState extends State<MyBrands> {
           return Container(
             height: 40,
             alignment: Alignment.center,
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(14),
@@ -45,7 +45,7 @@ class _MyBrandsState extends State<MyBrands> {
                       Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SearchText(),
+                    builder: (context) =>  SearchText(),
                   ),
                 );
                     },

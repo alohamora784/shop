@@ -1,5 +1,16 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smartphone_shop/models/carddata.dart';
+import 'package:smartphone_shop/models/objectclass.dart';
+import 'package:smartphone_shop/models/posts.dart';
+import 'package:smartphone_shop/models/product_table.dart';
 import 'package:smartphone_shop/pages/product.dart';
+import 'package:http/http.dart' as http;
+
+import '../providers/posts_provider.dart';
 
 class MySlider extends StatefulWidget {
   const MySlider({super.key});
@@ -8,36 +19,42 @@ class MySlider extends StatefulWidget {
   State<MySlider> createState() => _MySliderState();
 }
 
-int currentPage = 0;
-
 class _MySliderState extends State<MySlider> {
+  int currentPage = 0;
+  
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(),
-      width: double.infinity,
-      height: 371,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
-        child: PageView(
-          onPageChanged: (int page) {
-            setState(() {
-              currentPage = page;
-            });
-          },
-          children: [
-            imageSlider(
-                "assets/images/Rectangle 22.png", "iPhone 14 \n Pro Max"),
-            imageSlider(
-                "assets/images/samsung.png", "Samsung s22  \n Galaxy Ultra"),
-            imageSlider("assets/images/p66.png", "Google\n Pixel 6 Pro"),
-          ],
-        ),
-      ),
+    return Consumer<PostsProvider>(
+      builder: (_,provider,__) {
+        final List<Post> products = provider.posts;
+        return Container(
+          decoration: BoxDecoration(),
+          width: double.infinity,
+          height: 371,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(25),
+            child: PageView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: products.length > 3 ? 3 : products.length,
+              onPageChanged: (int page) {
+                setState(() {
+                  currentPage = page;
+                  
+                });
+              },
+              itemBuilder: (BuildContext context, int index) {
+                return imageSlider(
+                    products[index].sliderimage, products[index].name, products[index]);
+              },
+            ),
+          ),
+        );
+      }
     );
   }
 
-  imageSlider(String a, String b) {
+  imageSlider(String a, String b, Post post) {
     return Stack(
       children: [
         Positioned(
@@ -47,18 +64,20 @@ class _MySliderState extends State<MySlider> {
           bottom: 0,
           child: GestureDetector(
             onTap: () {
-              if (currentPage == 0) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProductPage(),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductPage(
+                    product: post,
                   ),
-                );
-              }
+                ),
+              );
             },
-            child: Image.asset(
-              a,
-              fit: BoxFit.cover,
+            child: Align(
+              child: Image.network(
+                a,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -70,11 +89,14 @@ class _MySliderState extends State<MySlider> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               for (int i = 0; i < 3; i++)
-                Container(
-                  width: 90,
-                  height: 2,
-                  decoration: BoxDecoration(
-                    color: currentPage == i ? Colors.orange : Colors.white,
+                Flexible(
+                  flex: 6,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 5, left: 5),
+                    height: 2,
+                    decoration: BoxDecoration(
+                      color: currentPage == i ? Colors.orange : Colors.black,
+                    ),
                   ),
                 ),
             ],
@@ -103,7 +125,7 @@ class _MySliderState extends State<MySlider> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Icon(Icons.arrow_forward_ios_sharp),
+              child: const Icon(Icons.arrow_forward_ios_sharp),
             ),
           ),
         )
