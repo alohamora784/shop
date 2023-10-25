@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smartphone_shop/pages/catalog.dart';
-import 'package:smartphone_shop/pages/profile.dart';
-import 'package:smartphone_shop/pages/registration/resetpassword.dart';
-import 'package:smartphone_shop/pages/search.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:smartphone_shop/pages/home/home.dart';
+
+import 'package:smartphone_shop/pages/registration/resset_password.dart';
+import 'package:smartphone_shop/pages/search/search.dart';
+import 'package:smartphone_shop/pages/wishlist/wishlist.dart';
 
 class MyNavBar extends StatefulWidget {
   const MyNavBar({super.key});
@@ -14,10 +16,10 @@ class MyNavBar extends StatefulWidget {
 class _MyNavBarState extends State<MyNavBar> {
   int selectedIndex = 0;
   final List<Widget> _pages = [
-    const MyCatalog(),
+    const MyHome(),
     const PasswordResset(),
     const Search(),
-    const Profile()
+    const WishList(),
   ];
 
   void navigatepage(index) {
@@ -33,33 +35,77 @@ class _MyNavBarState extends State<MyNavBar> {
         index: selectedIndex,
         children: _pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.orange,
-        type: BottomNavigationBarType.fixed,
-        onTap: navigatepage,
-        currentIndex: selectedIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "",
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+        child: Container(
+          height: 60,
+          decoration: BoxDecoration(
+              border:
+                  Border.all(color: const Color.fromARGB(255, 145, 142, 142)),
+              borderRadius: BorderRadius.circular(100),
+              color: Colors.transparent),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: BottomNavigationBar(
+              selectedFontSize: 0,
+              type: BottomNavigationBarType.fixed,
+              onTap: navigatepage,
+              currentIndex: selectedIndex,
+              items: [
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                    "assets/svg/house.svg",
+                    color: Colors.orange,
+                  ),
+                  icon: SvgPicture.asset(
+                    "assets/svg/house.svg",
+                  ),
+                  label: "wtf",
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                    "assets/svg/shop.svg",
+                    color: Colors.orange,
+                  ),
+                  icon: SvgPicture.asset(
+                    "assets/svg/shop.svg",
+                  ),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                    "assets/svg/search.svg",
+                    color: Colors.orange,
+                  ),
+                  icon: SvgPicture.asset(
+                    "assets/svg/search.svg",
+                  ),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                    "assets/svg/heart1.svg",
+                    color: Colors.orange,
+                  ),
+                  icon: SvgPicture.asset(
+                    "assets/svg/heart1.svg",
+                  ),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                    "assets/svg/bell.svg",
+                    color: Colors.orange,
+                  ),
+                  icon: SvgPicture.asset(
+                    "assets/svg/bell.svg",
+                  ),
+                  label: "",
+                ),
+              ],
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_rounded),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "",
-          ),
-        ],
+        ),
       ),
     );
   }

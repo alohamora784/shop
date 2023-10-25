@@ -1,20 +1,19 @@
-import 'package:flutter/foundation.dart';
-
-import 'category.dart';
-
 class Post {
-  final String name;
   final double price;
   final String title;
   final String description;
   final int id;
-  final String sliderimage;
+  final String thumbnail;
   final List productsliderimages;
   final String brands;
   final DateTime uploadtime;
-  final MyCategory category;
+  final String category;
+  final int stock;
+  final double rating;
+  final double discountPercentage;
+  bool isselected;
   String searchinfo() {
-    return "$name  $title $description $brands$category".toLowerCase();
+    return "  $title $description $brands$category".toLowerCase();
   }
 
   factory Post.fromJson(json) {
@@ -23,24 +22,29 @@ class Post {
       title: json["title"],
       price: json["price"].toDouble(),
       description: json["description"],
-      sliderimage: json["image"],
-      brands: "",
-      name: json["title"],
+      thumbnail: json["thumbnail"],
+      brands: json["brand"],
       uploadtime: DateTime.now(),
-      productsliderimages: [],
-      category: MyCategory.headphones,
+      productsliderimages: json["images"],
+      category: json["category"],
+      stock: json["stock"],
+      rating: json["rating"].toDouble(),
+      discountPercentage: json["discountPercentage"].toDouble(),
     );
   }
   Post({
-    required this.name,
     required this.price,
     required this.title,
     required this.description,
     required this.id,
-    required this.sliderimage,
+    required this.thumbnail,
     required this.productsliderimages,
     required this.brands,
     required this.uploadtime,
     required this.category,
+    required this.stock,
+    required this.rating,
+    required this.discountPercentage,
+    this.isselected = true,
   });
 }

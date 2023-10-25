@@ -28,9 +28,9 @@ class _MySignUpState extends State<MySignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(
+      appBar: const MyAppBar(
         header: 'Sign Up',
-        hasDivider: true, hasIcon: true,
+         hasIcon: true,
       ),
       body: Stack(
         children: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/carddata.dart';
 
 class CardProvider extends ChangeNotifier {
-  List<CardData> _cardBook = [];
+  final List<CardData> _cardBook = [];
   List<CardData> get cardBook => _cardBook;
 
   void addCard(CardData carddata) {

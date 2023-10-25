@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smartphone_shop/models/address.dart';
-import 'package:smartphone_shop/pages/home/profile/addressbook/editaddress/editaddress.dart';
 
-import '../providers/address_provider.dart';
 
-class AddressBottomshet extends StatefulWidget {
-  final int x;
-  final AddressBook p;
-  const AddressBottomshet({super.key, required this.x, required this.p});
+
+import '../../../../../providers/card_provider.dart';
+
+class PaymentBottomSheet extends StatefulWidget {
+  final x;
+  const PaymentBottomSheet({super.key, required this.x});
 
   @override
-  State<AddressBottomshet> createState() => _AddressBottomshetState();
+  State<PaymentBottomSheet> createState() => _PaymentBottomSheetState();
 }
 
-class _AddressBottomshetState extends State<AddressBottomshet> {
+class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,14 +45,7 @@ class _AddressBottomshetState extends State<AddressBottomshet> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            EditAddress(x: widget.x, p: widget.p),
-                      ),
-                    );
+                    _markDefault();
                   },
                   child: Container(
                     height: 90,
@@ -67,12 +59,12 @@ class _AddressBottomshetState extends State<AddressBottomshet> {
                       child: Column(
                         children: [
                           Icon(
-                            Icons.edit_document,
+                            Icons.check_circle,
                             size: 40,
                           ),
                           SizedBox(height: 6),
                           Text(
-                            "Edit",
+                            "Mark as default",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w600),
                           ),
@@ -83,7 +75,8 @@ class _AddressBottomshetState extends State<AddressBottomshet> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Provider.of<AddressProvider>(context, listen: false).deleteAddress(widget.x);
+                    Provider.of<CardProvider>(context, listen: false)
+                        .deleteCard(widget.x);
                     Navigator.pop(context);
                   },
                   child: Container(
@@ -118,5 +111,11 @@ class _AddressBottomshetState extends State<AddressBottomshet> {
         ],
       ),
     );
+  }
+
+  void _markDefault() {
+    Provider.of<CardProvider>(context, listen: false).markDefault(widget.x);
+
+    Navigator.pop(context);
   }
 }

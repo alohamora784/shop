@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartphone_shop/models/address.dart';
 
 class AddressProvider extends ChangeNotifier {
-  List<AddressBook> _addressBook = [];
+  final List<AddressBook> _addressBook = [];
   List<AddressBook> get addressBook => _addressBook;
 
   void addAddress(AddressBook address) {
